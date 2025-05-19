@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zTw7 - Portfólio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4CAF50;
+            --accent: #FF5722;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+        }
+        
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--darker);
+    color: var(--light);
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+        .code-font {
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .intro-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--primary);
+            animation: typing 3s steps(40) 1s forwards, blink-caret 0.75s step-end infinite;
+            font-size: 2rem;
+            opacity: 0;
+        }
+        
+        @keyframes typing {
+            from { width: 0; opacity: 1; }
+            to { width: 100%; opacity: 1; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary); }
+        }
+        
+        .fade-out {
+            animation: fadeOut 1s ease-in-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+        
+        .language-tag {
+            background-color: rgba(108, 99, 255, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 5px 15px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-tag:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .project-card {
+            background: linear-gradient(145deg, #151515, #0d0d0d);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid #222;
+            height: 400px;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .project-card .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.95), transparent);
+            transform: translateY(70%);
+            transition: transform 0.4s ease;
+        }
+        
+        .project-card:hover .project-info {
+            transform: translateY(0);
+        }
+        
+        .project-image {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #151515;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #1a1a1a;
+            color: var(--light);
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 24px;
+            background-color: var(--primary);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .logo-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+            overflow: hidden;
+        }
+        
+        .logo-text {
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        .profile-icon {
+            width: 250px;
+            height: 250px;
+            position: relative;
+        }
+        
+        .profile-icon-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            animation: pulse 3s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        .profile-icon-inner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            background-color: var(--darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .profile-icon-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 64px;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+        
+        .profile-icon-text::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .code-brackets {
+            position: absolute;
+            font-family: 'Space Mono', monospace;
+            font-size: 120px;
+            opacity: 0.1;
+            color: var(--primary);
+        }
+        
+        .bracket-left {
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+        }
+        
+        .bracket-right {
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        
+        .project-icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .racing-game-icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
+            overflow: hidden;
+        }
+        
+        .racing-track {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #151515;
+        }
+        
+        .track-line {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background-color: #fff;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: trackMove 1.5s linear infinite;
+        }
+        
+        @keyframes trackMove {
+            0% { top: -50px; }
+            100% { top: 100%; }
+        }
+        
+        .car-emoji {
+            position: absolute;
+            font-size: 36px;
+            z-index: 2;
+            animation: carBounce 1s ease-in-out infinite alternate;
+        }
+        
+        @keyframes carBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        
+        .racing-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(108, 99, 255, 0.1), rgba(255, 87, 34, 0.1));
+            z-index: 1;
+        }
+        
+        .racing-title {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 3;
+        }
+        
+        .chat-app-icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+            overflow: hidden;
+        }
+        
+        .chat-bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .chat-bubble {
+            position: absolute;
+            border-radius: 20px;
+            padding: 10px 15px;
+            max-width: 70%;
+            animation: fadeInUp 0.5s forwards;
+            opacity: 0;
+        }
+        
+        .bubble-left {
+            background-color: #2a2a2a;
+            color: #fff;
+            left: 10px;
+            border-bottom-left-radius: 0;
+        }
+        
+        .bubble-right {
+            background-color: var(--primary);
+            color: #fff;
+            right: 10px;
+            border-bottom-right-radius: 0;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .chat-app-title {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 3;
+        }
+        
+        .chat-app-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(108, 99, 255, 0.05), rgba(108, 99, 255, 0.2));
+            z-index: 1;
+        }
+        
+        .project-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-animation">
+        <div class="code-font text-primary mb-4 text-xl text-center">
+            <span class="text-green-500">$</span> <span class="text-blue-400">init</span> <span class="text-purple-400">portfolio.sh</span>
+        </div>
+        <div class="typing-text code-font text-primary mb-8 px-4 text-center">
+            <span class="text-green-500">></span> Carregando portfólio de zTw7...
+        </div>
+        <div class="flex space-x-2">
+            <div class="w-3 h-3 rounded-full bg-primary animate-bounce" style="animation-delay: 0s;"></div>
+            <div class="w-3 h-3 rounded-full bg-primary animate-bounce" style="animation-delay: 0.2s;"></div>
+            <div class="w-3 h-3 rounded-full bg-primary animate-bounce" style="animation-delay: 0.4s;"></div>
+        </div>
+    </div>
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+        <header class="flex flex-col md:flex-row justify-between items-center mb-16 reveal">
+            <div class="flex items-center">
+                <div class="logo-container mr-4">
+                    <span class="logo-text">z7</span>
+                </div>
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-2">
+                        <span class="gradient-text">zTw7</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 code-font">Programador de Software</p>
+                </div>
+            </div>
+            <nav class="mt-6 md:mt-0">
+                <ul class="flex space-x-6">
+                    <li><a href="#sobre" class="hover:text-primary transition-colors">Sobre</a></li>
+                    <li><a href="#projetos" class="hover:text-primary transition-colors">Projetos</a></li>
+                    <li><a href="#contato" class="hover:text-primary transition-colors">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="sobre" class="mb-24 reveal">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Olá, sou <span class="gradient-text">zTw7</span></h2>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        Programador de software e este é minha guia do programador. Especializado em desenvolvimento web e mobile, 
+                        com foco em criar soluções eficientes e escaláveis para problemas complexos.
+                    </p>
+                    <div class="flex flex-wrap">
+                        <span class="language-tag code-font text-sm">HTML</span>
+                        <span class="language-tag code-font text-sm">CSS</span>
+                        <span class="language-tag code-font text-sm">JavaScript</span>
+                        <span class="language-tag code-font text-sm">Python</span>
+                        <span class="language-tag code-font text-sm">Java</span>
+                        <span class="language-tag code-font text-sm">TypeScript</span>
+                        <span class="language-tag code-font text-sm">PHP</span>
+                        <span class="language-tag code-font text-sm">SQL</span>
+                        <span class="language-tag code-font text-sm">Kotlin</span>
+                        <span class="language-tag code-font text-sm">XML</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="profile-icon">
+                        <div class="profile-icon-bg"></div>
+                        <div class="profile-icon-inner">
+                            <span class="code-brackets bracket-left">{</span>
+                            <span class="profile-icon-text">zTw7</span>
+                            <span class="code-brackets bracket-right">}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="projetos" class="mb-24">
+            <h2 class="text-3xl font-bold mb-12 text-center reveal">Meus Projetos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <a href="#" class="project-link" id="project1-link" title="Ver projeto">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <div class="racing-game-icon">
+                            <div class="racing-track">
+                                <div class="track-line" style="top: 20px;"></div>
+                                <div class="track-line" style="top: 80px;"></div>
+                                <div class="track-line" style="top: 140px;"></div>
+                                <div class="track-line" style="top: 200px;"></div>
+                            </div>
+                            <div class="car-emoji" style="bottom: 50px; left: 35%;">🏎️</div>
+                            <div class="car-emoji" style="bottom: 100px; left: 55%;">🚗</div>
+                            <div class="racing-overlay"></div>
+                            <div class="racing-title">Emoji Corrida</div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="text-xl font-bold mb-2">Projeto de Corrida</h3>
+                        <p class="text-gray-400 mb-4">Um divertido jogo de corrida com emojis desenvolvido exclusivamente com JavaScript. Oferece uma experiência leve e divertida com controles simples.</p>
+                        <p class="text-gray-300 mb-4">O projeto inclui 2 personagens emoji para escolher e um sistema simples.</p>
+                        <div class="flex">
+                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" style="animation-delay: 0.2s;">
+                    <div class="project-image">
+                        <a href="#" class="project-link" id="project2-link" title="Ver projeto">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <div class="racing-game-icon">
+                            <div class="racing-track">
+                                <div class="track-line" style="top: 20px;"></div>
+                                <div class="track-line" style="top: 80px;"></div>
+                                <div class="track-line" style="top: 140px;"></div>
+                                <div class="track-line" style="top: 200px;"></div>
+                            </div>
+                            <div class="car-emoji" style="bottom: 50px; left: 30%;">🚀</div>
+                            <div class="car-emoji" style="bottom: 120px; left: 60%;">🏍️</div>
+                            <div class="car-emoji" style="bottom: 180px; left: 45%;">🚓</div>
+                            <div class="racing-overlay"></div>
+                            <div class="racing-title">Emoji Corrida 2.0</div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="text-xl font-bold mb-2">Corrida Part 2</h3>
+                        <p class="text-gray-400 mb-4">Evolução do projeto original, também desenvolvido exclusivamente com JavaScript. Apresenta mais personagens, novos circuitos e modo multiplayer.</p>
+                        <p class="text-gray-300 mb-4">Inclui sistema de corrida, customização de veículos emoji e integração por teclas.</p>
+                        <div class="flex">
+                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" style="animation-delay: 0.4s;">
+                    <div class="project-image">
+                        <a href="#" class="project-link" id="project3-link" title="Ver projeto">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <div class="chat-app-icon">
+                            <div class="chat-bubbles">
+                                <div class="chat-bubble bubble-left" style="top: 30px; animation-delay: 0.2s;">Olá, como vai?</div>
+                                <div class="chat-bubble bubble-right" style="top: 80px; animation-delay: 0.7s;">Tudo bem! E você?</div>
+                                <div class="chat-bubble bubble-left" style="top: 130px; animation-delay: 1.2s;">Vamos jogar algo?</div>
+                                <div class="chat-bubble bubble-right" style="top: 180px; animation-delay: 1.7s;">Claro! 🎮</div>
+                            </div>
+                            <div class="chat-app-overlay"></div>
+                            <div class="chat-app-title">Chat Club</div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="text-xl font-bold mb-2">Chat Club</h3>
+                        <p class="text-gray-400 mb-4">Aplicativo de interação social com foco em comunidades temáticas. Desenvolvido com Kotlin, Java, XML e JavaScript para uma experiência fluida em dispositivos móveis.</p>
+                        <p class="text-gray-300 mb-4">Oferece recursos de chat em tempo real, compartilhamento de mídia, eventos ao vivo e sistema de reputação para usuários.</p>
+                        <div class="flex flex-wrap">
+                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2 mb-2">Kotlin</span>
+                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2 mb-2">Java</span>
+                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2 mb-2">XML</span>
+                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mb-2">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contato" class="reveal">
+            <h2 class="text-3xl font-bold mb-12 text-center">Entre em Contato</h2>
+            <div class="bg-dark p-8 rounded-2xl shadow-lg">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h3 class="text-xl font-bold mb-4">Vamos trabalhar juntos</h3>
+                        <p class="text-gray-400 mb-6">
+                            Estou sempre aberto a novos projetos e oportunidades de colaboração.
+                            Se você tem um projeto em mente ou apenas quer conversar, entre em contato!
+                        </p>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <span class="text-gray-300">ztw7zntt@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <span class="text-gray-300">São Paulo, Brasil</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8 border-t md:border-t-0 md:border-l border-gray-700 pt-8 md:pt-0 md:pl-8">
+                        <h3 class="text-xl font-bold mb-6">Redes Sociais</h3>
+                        <div class="flex justify-center md:justify-start">
+                            <a href="#" class="social-icon" id="github-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-icon" id="linkedin-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon" id="twitter-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon" id="instagram-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-dark py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2025 zTw7. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.intro-animation').classList.add('fade-out');
+                setTimeout(() => {
+                    document.querySelector('.intro-animation').style.display = 'none';
+                }, 1000);
+            }, 3000);
+            
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            function checkReveal() {
+                const windowHeight = window.innerHeight;
+                const revealPoint = 150;
+                
+                revealElements.forEach(element => {
+                    const revealTop = element.getBoundingClientRect().top;
+                    if (revealTop < windowHeight - revealPoint) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkReveal);
+            checkReveal();
+            
+            const chatBubbles = document.querySelectorAll('.chat-bubble');
+            chatBubbles.forEach((bubble, index) => {
+                setTimeout(() => {
+                    bubble.style.animationDelay = '0s';
+                }, index * 500);
+            });
+            
+            document.getElementById('project1-link').href = "https://editor.p5js.org/zTiago07k/full/zbHyYRrfQ";
+            document.getElementById('project2-link').href = "https://editor.p5js.org/zTiago07k/full/emD216DAx";
+            document.getElementById('project3-link').href = "https://chatclubem2027ssz.com";
+            
+            document.getElementById('github-link').href = "https://github.com/zTw7";
+            document.getElementById('linkedin-link').href = "https://linkedin.com/in/";
+            document.getElementById('twitter-link').href = "https://twitter.com/";
+            document.getElementById('instagram-link').href = "https://instagram.com/";
+            
+            setInterval(() => {
+                const trackLines = document.querySelectorAll('.track-line');
+                trackLines.forEach(line => {
+                    line.style.animation = 'none';
+                    setTimeout(() => {
+                        line.style.animation = 'trackMove 1.5s linear infinite';
+                    }, 10);
+                });
+            }, 3000);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'941cab48b022bc95',t:'MTc0NzU4NTA5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
