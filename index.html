@@ -1,738 +1,512 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thinni - Portfólio</title>
+    <title>Portfólio de Thinni</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
-        
-        :root {
-            --primary: #6C63FF;
-            --secondary: #4CAF50;
-            --accent: #FF5722;
-            --dark: #121212;
-            --darker: #0a0a0a;
-            --light: #e0e0e0;
-        }
-        
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--darker);
-    color: var(--light);
-    overflow-x: hidden;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow-y: scroll;
-}
-
-body::-webkit-scrollbar {
-    display: none;
-}
-
-        .code-font {
-            font-family: 'Space Mono', monospace;
-        }
-        
-        .intro-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--darker);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        
-        .typing-text {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--primary);
-            animation: typing 3s steps(40) 1s forwards, blink-caret 0.75s step-end infinite;
-            font-size: 2rem;
-            opacity: 0;
-        }
-        
-        @keyframes typing {
-            from { width: 0; opacity: 1; }
-            to { width: 100%; opacity: 1; }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary); }
-        }
-        
-        .fade-out {
-            animation: fadeOut 1s ease-in-out forwards;
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; visibility: hidden; }
-        }
-        
-        .language-tag {
-            background-color: rgba(108, 99, 255, 0.2);
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            padding: 5px 15px;
-            margin: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .language-tag:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .project-card {
-            background: linear-gradient(145deg, #151515, #0d0d0d);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            border: 1px solid #222;
-            height: 400px;
-            position: relative;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.2);
-            border-color: var(--primary);
-        }
-        
-        .project-card .project-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(10, 10, 10, 0.95), transparent);
-            transform: translateY(70%);
-            transition: transform 0.4s ease;
-        }
-        
-        .project-card:hover .project-info {
-            transform: translateY(0);
-        }
-        
-        .project-image {
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #151515;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: #1a1a1a;
-            color: var(--light);
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 24px;
-            background-color: var(--primary);
-            margin-left: 5px;
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        .logo-container {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-            overflow: hidden;
-        }
-        
-        .logo-text {
-            font-family: 'Space Mono', monospace;
-            font-weight: bold;
-            font-size: 24px;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .logo-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-        
-        .profile-icon {
-            width: 250px;
-            height: 250px;
-            position: relative;
-        }
-        
-        .profile-icon-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            animation: pulse 3s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
-        
-        .profile-icon-inner {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border-radius: 50%;
-            background-color: var(--darker);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .profile-icon-text {
-            font-family: 'Space Mono', monospace;
-            font-size: 64px;
-            font-weight: bold;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-        }
-        
-        .profile-icon-text::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-        
-        .code-brackets {
-            position: absolute;
-            font-family: 'Space Mono', monospace;
-            font-size: 120px;
-            opacity: 0.1;
-            color: var(--primary);
-        }
-        
-        .bracket-left {
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-        }
-        
-        .bracket-right {
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-        }
-        
-        .project-icon {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .racing-game-icon {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
-            overflow: hidden;
-        }
-        
-        .racing-track {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #151515;
-        }
-        
-        .track-line {
-            position: absolute;
-            width: 10px;
-            height: 40px;
-            background-color: #fff;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: trackMove 1.5s linear infinite;
-        }
-        
-        @keyframes trackMove {
-            0% { top: -50px; }
-            100% { top: 100%; }
-        }
-        
-        .car-emoji {
-            position: absolute;
-            font-size: 36px;
-            z-index: 2;
-            animation: carBounce 1s ease-in-out infinite alternate;
-        }
-        
-        @keyframes carBounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-10px); }
-        }
-        
-        .racing-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(108, 99, 255, 0.1), rgba(255, 87, 34, 0.1));
-            z-index: 1;
-        }
-        
-        .racing-title {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-family: 'Space Mono', monospace;
-            font-weight: bold;
-            font-size: 24px;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            z-index: 3;
-        }
-        
-        .chat-app-icon {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
-            overflow: hidden;
-        }
-        
-        .chat-bubbles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .chat-bubble {
-            position: absolute;
-            border-radius: 20px;
-            padding: 10px 15px;
-            max-width: 70%;
-            animation: fadeInUp 0.5s forwards;
-            opacity: 0;
-        }
-        
-        .bubble-left {
-            background-color: #2a2a2a;
-            color: #fff;
-            left: 10px;
-            border-bottom-left-radius: 0;
-        }
-        
-        .bubble-right {
-            background-color: var(--primary);
-            color: #fff;
-            right: 10px;
-            border-bottom-right-radius: 0;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .chat-app-title {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-family: 'Space Mono', monospace;
-            font-weight: bold;
-            font-size: 24px;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            z-index: 3;
-        }
-        
-        .chat-app-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(108, 99, 255, 0.05), rgba(108, 99, 255, 0.2));
-            z-index: 1;
-        }
-        
-        .project-link {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-decoration: none;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            background-color: var(--primary);
-            transform: scale(1.1);
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
-<link rel="icon" href="data:image/svg+xml,                <svg class="w-8 h-8 text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"></path>
-                </svg>
-<body>
-    <div class="intro-animation">
-        <div class="code-font text-primary mb-4 text-xl text-center">
-            <span class="text-green-500">$</span> <span class="text-blue-400">init</span> <span class="text-purple-400">portfolio.sh</span>
-        </div>
-        <div class="typing-text code-font text-primary mb-8 px-4 text-center">
-            <span class="text-green-500">></span> Carregando portfólio de Thinni...
-        </div>
-        <div class="flex space-x-2">
-            <div class="w-3 h-3 rounded-full bg-primary animate-bounce" style="animation-delay: 0s;"></div>
-            <div class="w-3 h-3 rounded-full bg-primary animate-bounce" style="animation-delay: 0.2s;"></div>
-            <div class="w-3 h-3 rounded-full bg-primary animate-bounce" style="animation-delay: 0.4s;"></div>
-        </div>
-    </div>
-    <div class="container mx-auto px-4 py-12 max-w-6xl">
-        <header class="flex flex-col md:flex-row justify-between items-center mb-16 reveal">
+<body class="min-h-screen">
+    <div id="particles-background"></div>
+    <div class="stars" id="stars"></div>
+    
+    <header class="fixed top-0 left-0 w-full py-4 px-6 md:px-12 z-50 bg-opacity-80 backdrop-blur-md bg-[#0a192f]">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <div class="logo-container mr-4">
-                    <span class="logo-text">Thi</span>
-                </div>
-                <div>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-2">
-                        <span class="gradient-text">Thinni</span>
-                    </h1>
-                    <p class="text-xl text-gray-400 code-font">Programador de Software</p>
-                </div>
+              <div class="avatar w-12 h-12 bg-blue-900 rounded-full overflow-hidden">
+                <img src="avatar.jpg" alt="Avatar" class="w-full h-full object-cover">
+              </div>              
+                <span class="ml-3 text-xl font-bold text-[#64ffda]">Thinni</span>
             </div>
-            <nav class="mt-6 md:mt-0">
-                <ul class="flex space-x-6">
-                    <li><a href="#sobre" class="hover:text-primary transition-colors">Sobre</a></li>
-                    <li><a href="#projetos" class="hover:text-primary transition-colors">Projetos</a></li>
-                    <li><a href="#contato" class="hover:text-primary transition-colors">Contato</a></li>
-                </ul>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#sobre" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Sobre</a>
+                <a href="#habilidades" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Habilidades</a>
+                <a href="#projetos" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Projetos</a>
+                <a href="#contato" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Contato</a>
             </nav>
-        </header>
-        <section id="sobre" class="mb-24 reveal">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Olá, sou <span class="gradient-text">Thinni</span></h2>
-                    <p class="text-gray-300 mb-6 text-lg">
-                        Programador de software e este é minha guia do programador. Especializado em desenvolvimento web e mobile, 
-                        com foco em criar soluções eficientes e escaláveis para problemas complexos.
-                    </p>
-                    <div class="flex flex-wrap">
-                        <span class="language-tag code-font text-sm">HTML</span>
-                        <span class="language-tag code-font text-sm">CSS</span>
-                        <span class="language-tag code-font text-sm">JavaScript</span>
-                        <span class="language-tag code-font text-sm">Python</span>
-                        <span class="language-tag code-font text-sm">Java</span>
-                        <span class="language-tag code-font text-sm">TypeScript</span>
-                        <span class="language-tag code-font text-sm">PHP</span>
-                        <span class="language-tag code-font text-sm">SQL</span>
-                        <span class="language-tag code-font text-sm">Kotlin</span>
-                        <span class="language-tag code-font text-sm">XML</span>
+            
+            <button class="md:hidden text-[#64ffda]" id="menu-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div class="md:hidden hidden glass-effect absolute top-full left-0 w-full py-4 px-6" id="mobile-menu">
+            <nav class="flex flex-col space-y-4">
+                <a href="#sobre" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Sobre</a>
+                <a href="#habilidades" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Habilidades</a>
+                <a href="#projetos" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Projetos</a>
+                <a href="#contato" class="nav-link text-[#ccd6f6] hover:text-[#64ffda]">Contato</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container mx-auto px-6 md:px-12 pt-32 pb-20">
+        <section class="min-h-[80vh] flex flex-col justify-center animate-on-scroll" id="sobre">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-[#64ffda] typing-effect">Olá, me chamo <span class="text-white">Thinni</span></h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl text-[#8892b0] animate-on-scroll">
+                Gosto de programação e desenvolvimento de projetos criativos. Acompanhe alguns de meus projetos e descubra o que posso criar.
+            </p>
+            <div class="flex space-x-4 animate-on-scroll">
+                <a href="#projetos" class="px-6 py-3 bg-transparent border-2 border-[#64ffda] text-[#64ffda] rounded-md hover:bg-[#64ffda] hover:bg-opacity-10 transition-all duration-300 glow-on-hover">
+                    Ver Projetos
+                </a>
+                <a href="#contato" class="px-6 py-3 bg-[#64ffda] text-[#0a192f] rounded-md hover:bg-opacity-90 transition-all duration-300 glow-on-hover">
+                    Contato
+                </a>
+            </div>
+        </section>
+        <section class="py-20 animate-on-scroll" id="habilidades">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-white">Habilidades</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                <div class="skill-item p-6 rounded-lg flex flex-col items-center animate-on-scroll from-left" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-[#64ffda] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#64ffda]" viewBox="0 0 384 512">
+                            <path fill="currentColor" d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">HTML</h3>
+                    <p class="text-center text-[#8892b0]">Estruturação de páginas web com semântica e acessibilidade</p>
+                </div>
+                
+                <div class="skill-item p-6 rounded-lg flex flex-col items-center animate-on-scroll" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-[#64ffda] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#64ffda]" viewBox="0 0 384 512">
+                            <path fill="currentColor" d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm313.1 80l-4.8 47.3L193 208.6l-.3.1h111.5l-12.8 146.6-98.2 28.7-98.8-29.2-6.4-73.9h48.9l3.2 38.3 52.6 13.3 54.7-15.4 3.7-61.6-166.3-.5v-.1l-.2.1-3.6-46.3L193.1 162l6.5-2.7H76.7L70.9 112h242.2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">CSS</h3>
+                    <p class="text-center text-[#8892b0]">Estilização e design responsivo para interfaces modernas</p>
+                </div>
+                
+                <div class="skill-item p-6 rounded-lg flex flex-col items-center animate-on-scroll" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-[#64ffda] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#64ffda]" viewBox="0 0 448 512">
+                            <path fill="currentColor" d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">JavaScript</h3>
+                    <p class="text-center text-[#8892b0]">Programação dinâmica e interativa para web</p>
+                </div>
+                
+                <div class="skill-item p-6 rounded-lg flex flex-col items-center animate-on-scroll from-right" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 bg-[#64ffda] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#64ffda]" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M20.5 10L21 10.5V15.5L20.5 16H13V20.5L12.5 21H7.5L7 20.5V16H3.5L3 15.5V10.5L3.5 10H7V3.5L7.5 3H12.5L13 3.5V10H20.5ZM12 4H8V15.5L7.5 16H4V11H7.5L8 10.5V4H12V10.5L12.5 11H20V15H12.5L12 14.5V4Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Scratch</h3>
+                    <p class="text-center text-[#8892b0]">Programação visual para criação de jogos e animações</p>
+                </div>
+            </div>
+            <div class="expand-skills-btn" id="expand-skills-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </div>
+            
+            <div class="additional-skills mt-6" id="additional-skills">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+                    <div class="skill-item skill-item-additional p-6 rounded-lg flex flex-col items-center" style="transition-delay: 100ms;">
+                        <div class="w-16 h-16 bg-[#64ffda] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#64ffda]" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12 0C5.81 0 6.5 2.63 6.5 2.63L6.51 5.41H12.13V6.16H4.19C4.19 6.16 0 5.33 0 11.97C0 18.61 3.64 18.37 3.64 18.37H5.81V15.39C5.81 15.39 5.68 11.74 9.39 11.74H15.04C15.04 11.74 18.39 11.82 18.39 8.52V3.17C18.39 3.17 19.09 0 12 0ZM8.82 1.78C9.14 1.78 9.41 2.04 9.41 2.37C9.41 2.7 9.14 2.96 8.82 2.96C8.49 2.96 8.23 2.7 8.23 2.37C8.23 2.04 8.49 1.78 8.82 1.78Z"/>
+                                <path fill="currentColor" d="M12 24C18.19 24 17.5 21.37 17.5 21.37L17.49 18.59H11.87V17.84H19.81C19.81 17.84 24 18.67 24 12.03C24 5.39 20.36 5.63 20.36 5.63H18.19V8.61C18.19 8.61 18.32 12.26 14.61 12.26H8.96C8.96 12.26 5.61 12.18 5.61 15.48V20.83C5.61 20.83 4.91 24 12 24ZM15.18 22.22C14.86 22.22 14.59 21.96 14.59 21.63C14.59 21.3 14.86 21.04 15.18 21.04C15.51 21.04 15.77 21.3 15.77 21.63C15.77 21.96 15.51 22.22 15.18 22.22Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Python</h3>
+                        <p class="text-center text-[#8892b0]">Linguagem versátil para desenvolvimento de aplicações e análise de dados</p>
+                    </div>
+
+                    <div class="skill-item skill-item-additional p-6 rounded-lg flex flex-col items-center" style="transition-delay: 200ms;">
+                        <div class="w-16 h-16 bg-[#64ffda] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#64ffda]" viewBox="0 0 384 512">
+                                <path fill="currentColor" d="M277.74 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1zm-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296 53.2 242.84 0 242.84 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2zm114.6-176.2c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3zm-6.1 270.5a12.19 12.19 0 0 1-2 2.6c128.3-33.7 81.1-118.9 19.8-97.3a17.33 17.33 0 0 0-8.2 6.3 70.45 70.45 0 0 1 11-3c31-6.5 75.5 41.5-20.6 91.4zM348 437.4s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6.7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.84 509.4 401 461.3 348 437.4zM124.44 396c-78.7 22 47.9 67.4 148.1 24.5a185.89 185.89 0 0 1-28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2zm179.8 97.2c-78.7 14.8-175.8 13.1-233.3 3.6 0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7zM260.64 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9a60.37 60.37 0 0 1-21.1-12.8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Java</h3>
+                        <p class="text-center text-[#8892b0]">Linguagem orientada a objetos para desenvolvimento de aplicações robustas</p>
+                    </div>
+                    
+                    <div class="skill-item skill-item-additional p-6 rounded-lg flex flex-col items-center" style="transition-delay: 300ms;">
+                        <div class="w-16 h-16 bg-[#64ffda] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#64ffda]" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M24 24H0V0h24L12 12Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Kotlin</h3>
+                        <p class="text-center text-[#8892b0]">Linguagem moderna para desenvolvimento Android e multiplataforma</p>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="profile-icon">
-                        <div class="profile-icon-bg"></div>
-                        <div class="profile-icon-inner">
-                            <span class="code-brackets bracket-left">{</span>
-                            <span class="profile-icon-text">Thini</span>
-                            <span class="code-brackets bracket-right">}</span>
+            </div>
+        </section>
+        <section class="py-20 animate-on-scroll" id="projetos">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-white">Projetos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+
+                <div class="project-card rounded-lg overflow-hidden animate-on-scroll from-left" style="transition-delay: 100ms;">
+                    <div class="h-48 bg-blue-900 overflow-hidden relative">
+                        <div class="project-image h-full w-full flex items-center justify-center p-4 bg-gradient-to-br from-blue-800 to-purple-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="h-full">
+                                <circle cx="200" cy="200" r="150" fill="#FF5722"/>
+                                <circle cx="150" cy="150" r="30" fill="white"/>
+                                <circle cx="250" cy="150" r="30" fill="white"/>
+                                <circle cx="150" cy="150" r="5" fill="#3F51B5"/>
+                                <circle cx="250" cy="150" r="5" fill="#3F51B5"/>
+                                <path d="M150 270 Q200 235 250 235" stroke="black" fill="transparent" stroke-width="2"/>
+                                <polygon points="200,180 170,220 220,220" fill="#3F51B5"/>
+                                <path d="M123 115 L178 113" stroke="black" stroke-width="2"/>
+                                <path d="M225 116 L279 106" stroke="black" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://editor.p5js.org/new" target="_blank" class="project-link">Ver Projeto</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#64ffda]">Monaliza</h3>
+                        <p class="text-[#8892b0] mb-4">Projeto feito em p5.js onde os olhos da figura seguem o movimento do mouse do usuário, criando uma interação visual interessante.</p>
+                        <div class="code-display p-4 text-xs">
+                            <pre>function setup() {
+  createCanvas(400, 400);
+}
+
+let olhoX;
+let olhoY;
+
+function draw() {
+  background("#FF5722");
+  fill("#03A9F4");
+  circle(200, 200, 300); // rosto
+  fill("white");
+  circle(150, 150, 60); // olho esquerdo
+  circle(250, 150, 60); // olho direito
+  line(150, 270, 250, 235); // boca
+  fill("#3F51B5");
+  triangle(200, 180, 170, 220, 220, 220); // nariz
+  line(123, 115, 178, 113); // sobrancelha esquerda
+  line(225, 116, 279, 106); // sobrancelha direita
+
+  olhoX = map(mouseX, 0, 400, 130, 170);
+  olhoY = map(mouseY, 0, 400, 130, 170);
+
+  circle(olhoX, olhoY, 10); // nova pupila esquerda
+  circle(olhoX + 100, olhoY, 10); //nova pupila direita
+}</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card rounded-lg overflow-hidden animate-on-scroll" style="transition-delay: 200ms;">
+                    <div class="h-48 bg-green-900 overflow-hidden relative">
+                        <div class="project-image h-full w-full flex items-center justify-center p-4 bg-gradient-to-br from-green-800 to-teal-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="h-full">
+                                <rect width="400" height="400" fill="#D2EBB5"/>
+                                <rect x="350" y="0" width="10" height="400" fill="black"/>
+                                <text x="0" y="100" font-size="40">😎</text>
+                                <text x="0" y="300" font-size="40">👽</text>
+                            </svg>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://editor.p5js.org/new" target="_blank" class="project-link">Ver Projeto</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#64ffda]">Corrida de Emojis</h3>
+                        <p class="text-[#8892b0] mb-4">Jogo de corrida onde dois emojis competem para chegar à linha de chegada. Pressione 'A' para mover o primeiro emoji e 'S' para o segundo.</p>
+                        <div class="code-display p-4 text-xs">
+                            <pre>function setup() {
+  createCanvas(400, 400);
+}
+
+let xJogador1 = 0;
+let xJogador2 = 0;
+
+function draw() {
+  ativaJogo();
+  desenhaJogadores();
+  desenhaLinhaDeChegada();
+  verificaVencedor();
+}
+
+function desenhaLinhaDeChegada() {
+  rect(350, 0, 10, 400);
+}
+
+function desenhaJogadores() {
+  textSize(40);
+  text("😎", xJogador1, 100);
+  text("👽", xJogador2, 300);
+}
+
+function ativaJogo() {
+  if (focused == true) {
+    background("#D2EBB5");
+  } else {
+    background("rgb(238,178,178)");
+  }
+}
+
+function keyReleased() {
+  if (key === "a") {
+    xJogador1 += random(25);
+  }
+  if (key === "s") {
+    xJogador2 += random(25);
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card rounded-lg overflow-hidden animate-on-scroll from-right" style="transition-delay: 300ms;">
+                    <div class="h-48 bg-purple-900 overflow-hidden relative">
+                        <div class="project-image h-full w-full flex items-center justify-center p-4 bg-gradient-to-br from-purple-800 to-indigo-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="h-full">
+                                <rect width="400" height="400" fill="#D2EBB5"/>
+                                <rect x="350" y="0" width="10" height="400" fill="white"/>
+                                <rect x="350" y="0" width="10" height="10" fill="black"/>
+                                <rect x="350" y="20" width="10" height="10" fill="black"/>
+                                <rect x="350" y="40" width="10" height="10" fill="black"/>
+                                <rect x="350" y="60" width="10" height="10" fill="black"/>
+                                <text x="0" y="75" font-size="40">😎</text>
+                                <text x="0" y="150" font-size="40">❤️</text>
+                                <text x="0" y="225" font-size="40">👽</text>
+                                <text x="0" y="300" font-size="40">🚘</text>
+                            </svg>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://editor.p5js.org/new" target="_blank" class="project-link">Ver Projeto</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-[#64ffda]">Corrida de Emojis - Parte 2</h3>
+                        <p class="text-[#8892b0] mb-4">Versão aprimorada do jogo de corrida com quatro emojis. Use as teclas 'A', 'S', 'D' e 'F' para mover cada emoji até a linha de chegada.</p>
+                        <div class="code-display p-4 text-xs">
+                            <pre>function setup() {
+  createCanvas(400, 400);
+}
+
+let xJogador = [0, 0, 0, 0];
+let yJogador = [75, 150, 225, 300];
+let jogador = ["😎", "❤️", "👽", "🚘"];
+let teclas = ["a", "s", "d", "f"];
+let quantidade = jogador.length;
+
+function draw() {
+  ativaJogo();
+  desenhaJogadores();
+  desenhaLinhaDeChegada();
+  verificaVencedor();
+}
+
+function desenhaJogadores() {
+  textSize(40);
+  for (let i = 0; i < quantidade; i++) {
+    text(jogador[i], xJogador[i], yJogador[i]);
+  }
+}
+
+function desenhaLinhaDeChegada() {
+  fill("white");
+  rect(350, 0, 10, 400);
+  fill("black");
+  for (let yAtual = 0; yAtual < 400; yAtual += 20) {
+    rect(350, yAtual, 10, 10);
+  }
+}</pre>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="projetos" class="mb-24">
-            <h2 class="text-3xl font-bold mb-12 text-center reveal">Meus Projetos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <a href="#" class="project-link" id="project1-link" title="Ver projeto">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                        <div class="racing-game-icon">
-                            <div class="racing-track">
-                                <div class="track-line" style="top: 20px;"></div>
-                                <div class="track-line" style="top: 80px;"></div>
-                                <div class="track-line" style="top: 140px;"></div>
-                                <div class="track-line" style="top: 200px;"></div>
-                            </div>
-                            <div class="car-emoji" style="bottom: 50px; left: 35%;">🏎️</div>
-                            <div class="car-emoji" style="bottom: 100px; left: 55%;">🚗</div>
-                            <div class="racing-overlay"></div>
-                            <div class="racing-title">Emoji Corrida</div>
+        
+        <section class="py-20 animate-on-scroll" id="contato">
+            <h2 class="section-title text-3xl md:text-4xl font-bold text-white">Contato</h2>
+            <div class="mt-12 glass-effect p-8 rounded-lg animate-on-scroll">
+                <p class="text-[#8892b0] mb-8 text-lg">Interessado em trabalhar juntos? Entre em contato através dos canais abaixo:</p>
+                <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-12">
+                    <a href="https://github.com/thinni" target="_blank" class="contact-link flex items-center group">
+                        <div class="contact-icon-container w-12 h-12 bg-[#64ffda] bg-opacity-10 rounded-full flex items-center justify-center mr-4 group-hover:bg-opacity-20 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#64ffda]" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="text-xl font-bold mb-2">Projeto de Corrida</h3>
-                        <p class="text-gray-400 mb-4">Um divertido jogo de corrida com emojis desenvolvido exclusivamente com JavaScript. Oferece uma experiência leve e divertida com controles simples.</p>
-                        <p class="text-gray-300 mb-4">O projeto inclui 2 personagens emoji para escolher e um sistema simples.</p>
-                        <div class="flex">
-                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2">JavaScript</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1">GitHub</h3>
+                            <p class="text-[#8892b0]">github.com/thinni</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" style="animation-delay: 0.2s;">
-                    <div class="project-image">
-                        <a href="#" class="project-link" id="project2-link" title="Ver projeto">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                        <div class="racing-game-icon">
-                            <div class="racing-track">
-                                <div class="track-line" style="top: 20px;"></div>
-                                <div class="track-line" style="top: 80px;"></div>
-                                <div class="track-line" style="top: 140px;"></div>
-                                <div class="track-line" style="top: 200px;"></div>
-                            </div>
-                            <div class="car-emoji" style="bottom: 50px; left: 30%;">🚀</div>
-                            <div class="car-emoji" style="bottom: 120px; left: 60%;">🏍️</div>
-                            <div class="car-emoji" style="bottom: 180px; left: 45%;">🚓</div>
-                            <div class="racing-overlay"></div>
-                            <div class="racing-title">Emoji Corrida 2.0</div>
+                    </a>
+                    
+                    <a href="mailto:thinni@email.com" class="contact-link flex items-center group">
+                        <div class="contact-icon-container w-12 h-12 bg-[#64ffda] bg-opacity-10 rounded-full flex items-center justify-center mr-4 group-hover:bg-opacity-20 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#64ffda]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="text-xl font-bold mb-2">Corrida Part 2</h3>
-                        <p class="text-gray-400 mb-4">Evolução do projeto original, também desenvolvido exclusivamente com JavaScript. Apresenta mais personagens, novos circuitos e modo multiplayer.</p>
-                        <p class="text-gray-300 mb-4">Inclui sistema de corrida, customização de veículos emoji e integração por teclas.</p>
-                        <div class="flex">
-                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2">JavaScript</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-1">Email</h3>
+                            <p class="text-[#8892b0]">thinni@email.com</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" style="animation-delay: 0.4s;">
-                    <div class="project-image">
-                        <a href="#" class="project-link" id="project3-link" title="Ver projeto">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                        <div class="chat-app-icon">
-                            <div class="chat-bubbles">
-                                <div class="chat-bubble bubble-left" style="top: 30px; animation-delay: 0.2s;">Olá, como vai?</div>
-                                <div class="chat-bubble bubble-right" style="top: 80px; animation-delay: 0.7s;">Tudo bem! E você?</div>
-                                <div class="chat-bubble bubble-left" style="top: 130px; animation-delay: 1.2s;">Vamos jogar algo?</div>
-                                <div class="chat-bubble bubble-right" style="top: 180px; animation-delay: 1.7s;">Claro! 🎮</div>
-                            </div>
-                            <div class="chat-app-overlay"></div>
-                            <div class="chat-app-title">Chat Club</div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="text-xl font-bold mb-2">Chat Club</h3>
-                        <p class="text-gray-400 mb-4">Aplicativo de interação social com foco em comunidades temáticas. Desenvolvido com Kotlin, Java, XML e JavaScript para uma experiência fluida em dispositivos móveis.</p>
-                        <p class="text-gray-300 mb-4">Oferece recursos de chat em tempo real, compartilhamento de mídia, eventos ao vivo e sistema de reputação para usuários.</p>
-                        <div class="flex flex-wrap">
-                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2 mb-2">Kotlin</span>
-                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2 mb-2">Java</span>
-                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mr-2 mb-2">XML</span>
-                            <span class="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded mb-2">JavaScript</span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
-        <section id="contato" class="reveal">
-            <h2 class="text-3xl font-bold mb-12 text-center">Entre em Contato</h2>
-            <div class="bg-dark p-8 rounded-2xl shadow-lg">
-                <div class="flex flex-col md:flex-row">
-                    <div class="md:w-1/2 mb-8 md:mb-0">
-                        <h3 class="text-xl font-bold mb-4">Vamos trabalhar juntos</h3>
-                        <p class="text-gray-400 mb-6">
-                            Estou sempre aberto a novos projetos e oportunidades de colaboração.
-                            Se você tem um projeto em mente ou apenas quer conversar, entre em contato!
-                        </p>
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-primary"></i>
-                            </div>
-                            <span class="text-gray-300">ztw7zntt@gmail.com</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-primary"></i>
-                            </div>
-                            <span class="text-gray-300">São Paulo, Brasil</span>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 md:pl-8 border-t md:border-t-0 md:border-l border-gray-700 pt-8 md:pt-0 md:pl-8">
-                        <h3 class="text-xl font-bold mb-6">Redes Sociais</h3>
-                        <div class="flex justify-center md:justify-start">
-                            <a href="#" class="social-icon" id="github-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="social-icon" id="linkedin-link">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="social-icon" id="twitter-link">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-icon" id="instagram-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer class="bg-dark py-8 mt-16">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-400">&copy; 2025 Thinni. Todos os direitos reservados.</p>
+    </main>
+    <footer class="bg-[#0a192f] py-8 border-t border-[#112240]">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <p class="text-[#8892b0]">&copy; 2025 Thinni. Todos os direitos reservados.</p>
         </div>
     </footer>
-
+    
+    <div class="scroll-down" id="scroll-down">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 17.414l-6.707-6.707 1.414-1.414L12 14.586l5.293-5.293 1.414 1.414z"/>
+        </svg>
+    </div>
+    
+    <div class="scroll-to-top" id="scroll-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 6.586l-6.707 6.707 1.414 1.414L12 9.414l5.293 5.293 1.414-1.414z"/>
+        </svg>
+    </div>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.querySelector('.intro-animation').classList.add('fade-out');
-                setTimeout(() => {
-                    document.querySelector('.intro-animation').style.display = 'none';
-                }, 1000);
-            }, 3000);
-            
-            const revealElements = document.querySelectorAll('.reveal');
-            
-            function checkReveal() {
-                const windowHeight = window.innerHeight;
-                const revealPoint = 150;
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                revealElements.forEach(element => {
-                    const revealTop = element.getBoundingClientRect().top;
-                    if (revealTop < windowHeight - revealPoint) {
-                        element.classList.add('active');
-                    }
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
                 });
+                
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        function createStars() {
+            const stars = document.getElementById('stars');
+            const count = 200;
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                const size = Math.random() * 2;
+                
+                star.classList.add('star');
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random() * 0.8 + 0.2;
+                
+                stars.appendChild(star);
             }
             
-            window.addEventListener('scroll', checkReveal);
-            checkReveal();
+            for (let i = 0; i < 5; i++) {
+                createShootingStar();
+            }
+        }
+        
+        function createShootingStar() {
+            const stars = document.getElementById('stars');
+            const star = document.createElement('div');
             
-            const chatBubbles = document.querySelectorAll('.chat-bubble');
-            chatBubbles.forEach((bubble, index) => {
+            star.classList.add('shooting-star');
+            star.style.top = `${Math.random() * 50}%`;
+            star.style.left = `${Math.random() * 50}%`;
+            star.style.setProperty('--travel-distance', `${100 + Math.random() * 150}px`);
+            
+            stars.appendChild(star);
+            
+            setTimeout(() => {
+                star.style.animation = `shootingStar ${1 + Math.random() * 2}s linear forwards`;
+                
                 setTimeout(() => {
-                    bubble.style.animationDelay = '0s';
-                }, index * 500);
+                    star.remove();
+                    createShootingStar();
+                }, 3000);
+            }, Math.random() * 5000);
+        }
+        
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                    element.classList.add('visible');
+                }
             });
+        }
+        
+        function handleScroll() {
+            const scrollDown = document.getElementById('scroll-down');
+            const scrollToTop = document.getElementById('scroll-to-top');
             
-            document.getElementById('project1-link').href = "https://editor.p5js.org/zTiago07k/full/zbHyYRrfQ";
-            document.getElementById('project2-link').href = "https://editor.p5js.org/zTiago07k/full/emD216DAx";
-            document.getElementById('project3-link').href = "https://chatclubem2027ssz.com";
+            if (window.scrollY > 100) {
+                scrollDown.classList.add('hidden');
+            } else {
+                scrollDown.classList.remove('hidden');
+            }
             
-            document.getElementById('github-link').href = "https://github.com/Tw7z";
-            document.getElementById('linkedin-link').href = "https://linkedin.com/in/";
-            document.getElementById('twitter-link').href = "https://twitter.com/";
-            document.getElementById('instagram-link').href = "https://instagram.com/";
+            if (window.scrollY > 500) {
+                scrollToTop.classList.add('visible');
+            } else {
+                scrollToTop.classList.remove('visible');
+            }
             
-            setInterval(() => {
-                const trackLines = document.querySelectorAll('.track-line');
-                trackLines.forEach(line => {
-                    line.style.animation = 'none';
-                    setTimeout(() => {
-                        line.style.animation = 'trackMove 1.5s linear infinite';
-                    }, 10);
-                });
-            }, 3000);
+            animateOnScroll();
+        }
+        
+        document.getElementById('scroll-down').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
         });
+
+        document.getElementById('scroll-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        const expandSkillsBtn = document.getElementById('expand-skills-btn');
+        const additionalSkills = document.getElementById('additional-skills');
+        
+        expandSkillsBtn.addEventListener('click', () => {
+            expandSkillsBtn.classList.toggle('expanded');
+            additionalSkills.classList.toggle('expanded');
+        });
+        
+        window.addEventListener('load', () => {
+            createStars();
+            animateOnScroll();
+        });
+        
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', animateOnScroll);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'941cab48b022bc95',t:'MTc0NzU4NTA5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
